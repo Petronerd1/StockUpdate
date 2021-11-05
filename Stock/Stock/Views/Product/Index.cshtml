@@ -1,0 +1,44 @@
+﻿@model List<Data.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <table class="table table-bordered">
+        <tr>
+            <th>Product Name</th>
+            <th>Stock</th>
+            <th>Price</th>
+            <th>Status</th>
+            <th>Delete</th>
+            <th>Update</th>
+
+        </tr>
+        @foreach (var x in Model)
+        {
+    <tr>
+        <td>@x.ProductName</td>
+        <td>@x.ProductStock</td>
+        <td>@x.ProductPrice</td>
+        <td>@x.ProductStatus</td>
+        <td><a href="/Product/ProductDelete/@x.Id" class="btn btn-danger"></a>Delete</td>
+        <td><a href="/Product/ProductGet/@x.Id" class="btn btn-success"></a>Update</td>
+
+    </tr>
+        }
+
+    </table>
+    <a href="/Product/ProductAdd/" class="btn btn-primary">New Product</a>
+
+</body>
+</html>
